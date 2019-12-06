@@ -1,0 +1,27 @@
+<script>
+// more on video resolution
+constraints = {
+    video: {
+        width: { min: 1024, ideal: 1280, max: 1920 },
+       height: { min: 776, ideal: 720, max: 1080 }
+    }
+}
+
+// Framerate
+constraints = { video: { frameRate: { ideal: 10, max: 15 } } };
+ 
+// front and back camera (mobile), some examples
+var front = false;
+document.getElementById('flip-button').onclick = function() { 
+    front = !front; 
+};
+
+// toggle front and back camera (mobile) by clicking a button
+constraints = { video: { facingMode: (front? "user" : "environment") } };
+ 
+// prefer front camera
+constraints = { audio: true, video: { facingMode: "user" } }
+ 
+// require rear camera
+constraints = { audio: true, video: { facingMode: { exact: "environment" } } }
+</script>
